@@ -96,13 +96,22 @@ while ~isempty(email_contents)
     % Note: You can use strcmp(str1, str2) to compare two strings (str1 and
     %       str2). It will return 1 only if the two strings are equivalent.
     %
-
-
-
-
-
-
-
+    
+    
+% length(vocabList)
+for i = 1: length(vocabList)
+%     vocabList(i)
+    my_bool = strcmp(str, vocabList(i));
+%     my_bool
+    if my_bool == 1
+        word_indices = [word_indices ; i];
+    else
+        continue
+    end
+%     i
+end
+    
+% word_indices
 
 
 
