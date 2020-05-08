@@ -25,11 +25,15 @@ centroids = zeros(K, n);
 %
 % Note: You can use a for-loop over the centroids to compute this.
 %
-
-
-
-
-
+cen_point_array = zeros(K, (n+1));
+for i = 1:m
+    cen_num = idx(i);
+    cen_point_array(cen_num, 1:n) = cen_point_array(cen_num, 1:n) + X(i, :);
+    cen_point_array(cen_num, (n+1)) = cen_point_array(cen_num, (n+1)) + 1;
+end
+for z = 1:K
+    centroids(z, 1:n) = (1/cen_point_array(z, (n+1))) .* cen_point_array(z, 1:n);
+end
 
 
 

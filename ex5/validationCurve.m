@@ -15,7 +15,6 @@ lambda_vec = [0 0.001 0.003 0.01 0.03 0.1 0.3 1 3 10]';
 % You need to return these variables correctly.
 error_train = zeros(length(lambda_vec), 1);
 error_val = zeros(length(lambda_vec), 1);
-
 % ====================== YOUR CODE HERE ======================
 % Instructions: Fill in this function to return training errors in 
 %               error_train and the validation errors in error_val. The 
@@ -38,14 +37,37 @@ error_val = zeros(length(lambda_vec), 1);
 %       end
 %
 %
-for i = 1:length(lambda_vec)
+
+% [l1, ~] = size(lambda_vec);
+% 
+% for i = 1:l1
+%     lambda = lambda_vec(i);
+%     [train_error, val_error] = learningCurve(X, y, Xval, yval, lambda);  
+% end
+% 
+% error_train = train_error(1:l1, :);
+% error_val = val_error(1:l1, :);
+% size(lambda_vec)
+% size(error_train)
+% size(error_val)
+% 
+[l1, ~] = size(lambda_vec);
+for i = 1:l1
     lambda = lambda_vec(i);
-    [error_train, error_val] = learningCurve(X, y, Xval, yval, lambda);  
+    theta = trainLinearReg(X, y, lambda);
+    %training error
+    [error_train(i), ~] = linearRegCostFunction(X, y, theta, 0);
+    %validation error
+    [error_val(i), ~] = linearRegCostFunction(Xval, yval, theta, 0);
+    
 end
 
-
-
-
+% for i = 1:length(lambda_vec)
+%     lambda = lambda_vec(i);
+%     theta = trainLinearReg(X,y,lambda);
+%     error_train(i) = linearRegCostFunction(X   , y   , theta, 0);
+%     error_val(i)   = linearRegCostFunction(Xval, yval, theta, 0);
+% end
 
 
 

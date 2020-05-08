@@ -20,6 +20,10 @@ S = zeros(n);
 %       number of examples).
 %
 
+covar_mat = (1/m) * (X' * X);
+
+[U, S, V] = svd(covar_mat);
+
 
 
 

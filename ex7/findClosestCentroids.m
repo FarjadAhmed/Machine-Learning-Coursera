@@ -20,14 +20,26 @@ idx = zeros(size(X,1), 1);
 %
 % Note: You can use a for-loop over the examples to compute this.
 %
-
-
-
-
-
-
+% [m, ~] = size(X);
+% for i = 1:m
+%     for z = 1:length(centroids)
+%         dist(z, :) = (1/m) * sum( (X(i,:) - centroids(z, :)).^2 );
+%     end
+% %     [~, I] = min(dist);
+% %     idx(i, :) = I;       
+%     min_dist = min(dist);
+%     idx(i) = find(dist == min_dist);
+% end
+% % size(idx)
+[m, ~] = size(X);
+for i = 1:m
+    for z = 1:K
+        dist(z, :) = (1/m) * sum( (X(i,:) - centroids(z, :)).^2 );
+    end
+    [~, I] = min(dist);
+    idx(i, :) = [I];        
+end
 
 % =============================================================
 
 end
-

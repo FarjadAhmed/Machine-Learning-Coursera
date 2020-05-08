@@ -1,6 +1,6 @@
 function p = predictOneVsAll(all_theta, X)
 %PREDICT Predict the label for a trained one-vs-all classifier. The labels 
-%are in the range 1..K, where K = size(all_theta, 1). 
+% are in the range 1..K, where K = size(all_theta, 1). 
 %  p = PREDICTONEVSALL(all_theta, X) will return a vector of predictions
 %  for each example in the matrix X. Note that X contains the examples in
 %  rows. all_theta is a matrix where the i-th row is a trained logistic
@@ -33,39 +33,6 @@ X = [ones(m, 1) X];
 h = sigmoid(X * all_theta');
 [M, I] = max(h,[],2,'includenan');
 p = I;
-
-
-% toftheta = all_theta';
-% prob = [];
-% size(X(1,:))
-% size(toftheta(:, 1))
-% 
-% for iz = 1:500
-%     for i = 1:num_labels
-%         prob(i, iz) = sigmoid(X(iz,:) * toftheta(:, i));
-%     end
-%     
-% end
-% size(prob)
-% prob
-%p = max(prob, [], 1)
-
-
-%[a1, a2] = max(my_mat,[],1,'includenan')
-
-
-% prob = zeros(5000,10);
-% for pred = 1:num_labels
-%     p(pred,1) = pred;
-% end
-% toftheta = all_theta';
-% for tt = 1:5000
-%     for tt1 = 1:10
-% %         prob(:, tt) = sigmoid(X(tt,:) * toftheta(:, tt1));
-%     end
-%     p = max(prob, [], 2);
-% end
-% size(p)
 
 
 
